@@ -11,5 +11,5 @@ class ZonaSulSpider(scrapy.Spider):
             yield {
                 'name': item.css('div.bloco_informacoes div.prod_info a::text').extract_first(),
                 'image': item.css('div.prod_image img.img_thumb_list::attr(imgsrc160)').extract_first(),
-                'price': item.css('div.bloco_informacoes div.prod_preco_qtd div.prod_preco p.preco_por ins::text').extract_first().encode('utf-8'),
+                'price': item.css('div.bloco_informacoes div.prod_preco_qtd div.prod_preco p.preco_por ins::text').extract_first()
             }
