@@ -17,6 +17,6 @@ class GuanabaraSpider(scrapy.Spider):
         for item in response.css('div.products-list div.item'):
             yield {
                 'name': item.css('div.name::text').extract_first(),
-                'image': item.css('div.image::attr(style)').extract_first(),
+                'image': item.css('div.image::attr(style)').extract_first().replace('background-image: url("', '').replace('");',''),
                 'price': item.css('span.number::text').extract_first(),
             }
