@@ -29,6 +29,8 @@ class MundialSpider(scrapy.Spider):
 
     def parse(self, response):
         page = response.meta['page']
+        categorias = response.url.split('?', 1)[0]
+        categorias =  categorias.split('/',4)[4]
         for item in response.css('div#ofertas-content div.product'):
             yield {
                 'name': item.css('span.link-offers span.name-product::text')
@@ -38,7 +40,7 @@ class MundialSpider(scrapy.Spider):
                     .extract_first() + ' ' + item.css('span.link-offers span.price-product strong::text')
                     .extract_first() + item.css('span.link-offers span.price-product strong sup::text')
                     .extract_first(),
-                'page': page,
+                'category': categorias,
                 'market': 'Mundial'
             }
         next_page = response.css('div.ofertas-content button.load-more::attr(disabled)').extract_first()
