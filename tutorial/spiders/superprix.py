@@ -10,11 +10,12 @@ class SuperprixSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        yield {
-            'category': response.css('.bread-crumb li.last a::attr(title)')
-                .extract_first()
-        }
-        for item in response.css('div.prateleira ul'):
+
+        self.category = ''
+
+        self.category = response.css('.bread-crumb li.last a::attr(title)').extract_first()
+
+        for item in response.css('div.prateleira ul li'):
             yield {
                 'name': item.css('a.productImage::attr(title)')
                     .extract_first(),
@@ -24,5 +25,6 @@ class SuperprixSpider(scrapy.Spider):
                     .extract_first()
                     .replace('<em>R$ ','')
                     .replace('</em>',''),
-                'market': 'superprix'
+                'market': 'superprix',
+                'category': self.category
             }

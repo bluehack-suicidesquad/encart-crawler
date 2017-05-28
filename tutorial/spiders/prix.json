@@ -1,6 +1,4 @@
 [
-{"category": "Carnes e Pescados"},
-{"price": "10,98", "image": "http://superprix.vteximg.com.br/arquivos/ids/173663-210-210/File-de-Peito-de-Frango-Le-Vida-Congelado-1kg--Bandeja-.png", "market": "superprix", "name": "Filé de Peito de Frango Le Vida Congelado 1kg (Bandeja)"},
-{"category": "Bebidas"},
-{"price": "7,99", "image": "http://superprix.vteximg.com.br/arquivos/ids/170637-210-210/Cha-Mate-Matte-Leao-Natural-15l.jpg", "market": "superprix", "name": "Chá Mate Matte Leão Natural 1,5l"}
+{"category": "Carnes e Pescados", "price": "10,98", "image": "http://superprix.vteximg.com.br/arquivos/ids/173663-210-210/File-de-Peito-de-Frango-Le-Vida-Congelado-1kg--Bandeja-.png", "market": "superprix", "name": "Filé de Peito de Frango Le Vida Congelado 1kg (Bandeja)"},
+{"category": "Bebidas", "price": "7,99", "image": "http://superprix.vteximg.com.br/arquivos/ids/170637-210-210/Cha-Mate-Matte-Leao-Natural-15l.jpg", "market": "superprix", "name": "Chá Mate Matte Leão Natural 1,5l"}
 ]
