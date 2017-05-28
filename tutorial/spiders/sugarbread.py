@@ -1,29 +1,34 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
+import json
 
-class SugarBreadSpider(scrapy.Spider):
+class SugarbreadSpider(scrapy.Spider):
     name = "sugarbread"
+
     start_urls = [
-        'http://www.superprix.com.br/carnes-e-pescados/aves?PS=500',
-        'http://www.superprix.com.br/bebidas/'
-    ]
+        'https://api.gpa.digital/pa/products/list/secoes/C4233/limpeza?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
 
     def parse(self, response):
 
-        self.category = ''
+        data = []
+        jsonresponse = json.loads(response.body_as_unicode())
 
-        self.category = response.css('.bread-crumb li.last a::attr(title)').extract_first()
+        # yield {
 
-        for item in response.css('div.prateleira > ul > li:not(.helperComplement)'):
+        data_content = jsonresponse["content"]
+
+        # }
+
+        data_host = "https://www.paodeacucar.com"
+
+        for products in data_content["products"]:
             yield {
-                'name': item.css('a.productImage::attr(title)')
-                    .extract_first(),
-                'image': item.css('a.productImage img::attr(src)')
-                    .extract_first(),
-                'price': item.css('div.data .newPrice em').extract_first()
-                    .replace('<em>R$ ','')
-                    .replace('</em>',''),
-                'market': 'superprix',
-                'category': self.category
+
+            "Category": products["shelfList"][1]["name"],
+            "Name": products["name"],
+            "Price": products["currentPrice"],
+            "Market": "Pao de Acucar",
+            # "Image": products["mapOfImages"][0]["MEDIUM"],
+
             }
