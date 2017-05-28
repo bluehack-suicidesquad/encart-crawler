@@ -5,7 +5,12 @@ import scrapy
 class SuperprixSpider(scrapy.Spider):
     name = "superprix"
     start_urls = [
-        'http://www.superprix.com.br/carnes-e-pescados/',
+        'http://www.superprix.com.br/carnes-e-pescados/aves?PS=500',
+        'http://www.superprix.com.br/carnes-e-pescados/bovinas?PS=500',
+        'http://www.superprix.com.br/carnes-e-pescados/suinas?PS=500',
+        'http://www.superprix.com.br/carnes-e-pescados/peixes?PS=500',
+        'http://www.superprix.com.br/carnes-e-pescados/frutos-do-mar?PS=500',
+        'http://www.superprix.com.br/carnes-e-pescados/linguicas?PS=500',
         'http://www.superprix.com.br/bebidas/'
     ]
 
@@ -21,10 +26,9 @@ class SuperprixSpider(scrapy.Spider):
                     .extract_first(),
                 'image': item.css('a.productImage img::attr(src)')
                     .extract_first(),
-                'price': item.css('div.data .newPrice em').extract_first(),
-                    # item.css('span.centavos').extract_first(),
-                    # .replace('<em>R$ ','')
-                    # .replace('</em>',''),
+                'price': item.css('div.data .newPrice em').extract_first()
+                    .replace('<em>R$ ','')
+                    .replace('</em>',''),
                 'market': 'superprix',
                 'category': self.category
             }

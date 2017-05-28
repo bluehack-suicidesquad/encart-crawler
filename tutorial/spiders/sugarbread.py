@@ -9,8 +9,6 @@ class SugarbreadSpider(scrapy.Spider):
     start_urls = [
         'https://api.gpa.digital/pa/products/list/secoes/C4233/limpeza?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
 
-    ]
-
     def parse(self, response):
 
         data = []
@@ -34,4 +32,3 @@ class SugarbreadSpider(scrapy.Spider):
             # "Image": products["mapOfImages"][0]["MEDIUM"],
 
             }
-        #
