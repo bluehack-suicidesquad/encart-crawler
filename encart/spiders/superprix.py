@@ -29,6 +29,6 @@ class SuperprixSpider(scrapy.Spider):
                 'price': item.css('div.data .newPrice em').extract_first()
                     .replace('<em>R$ ','')
                     .replace('</em>',''),
-                'market': 'superprix',
+                'market': 'Superprix',
                 'category': self.category
             }
