@@ -2,15 +2,10 @@
 
 import scrapy
 
-class SuperprixSpider(scrapy.Spider):
-    name = "superprix"
+class SugarBreadSpider(scrapy.Spider):
+    name = "sugarbread"
     start_urls = [
         'http://www.superprix.com.br/carnes-e-pescados/aves?PS=500',
-        'http://www.superprix.com.br/carnes-e-pescados/bovinas?PS=500',
-        'http://www.superprix.com.br/carnes-e-pescados/suinas?PS=500',
-        'http://www.superprix.com.br/carnes-e-pescados/peixes?PS=500',
-        'http://www.superprix.com.br/carnes-e-pescados/frutos-do-mar?PS=500',
-        'http://www.superprix.com.br/carnes-e-pescados/linguicas?PS=500',
         'http://www.superprix.com.br/bebidas/'
     ]
 
