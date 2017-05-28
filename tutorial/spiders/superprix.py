@@ -22,9 +22,6 @@ class SuperprixSpider(scrapy.Spider):
                 'image': item.css('a.productImage img::attr(src)')
                     .extract_first(),
                 'price': item.css('div.data .newPrice em').extract_first(),
-                    # item.css('span.centavos').extract_first(),
-                    # .replace('<em>R$ ','')
-                    # .replace('</em>',''),
                 'market': 'superprix',
                 'category': self.category
             }
