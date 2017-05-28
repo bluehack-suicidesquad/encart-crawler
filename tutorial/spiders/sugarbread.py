@@ -8,25 +8,33 @@ class SugarbreadSpider(scrapy.Spider):
 
     start_urls = [
         'https://api.gpa.digital/pa/products/list/secoes/C4233/limpeza?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/products/list/secoes/C4215/bebidas?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/products/list/secoes/C4226/carnes?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/products/list/secoes/C4229/bebes?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/products/list/secoes/C4223/alimentos?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/products/list/secoes/C4231/perfumaria?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
+        'https://api.gpa.digital/pa/prgitstoducts/list/secoes/C4205/feira?storeId=501&qt=36&s=&ftr=&p=&rm=&gt=list',
 
     ]
 
     def parse(self, response):
 
-        data = []
         jsonresponse = json.loads(response.body_as_unicode())
-
         data_content = jsonresponse["content"]
-
         data_host = "https://www.paodeacucar.com"
 
         for products in data_content["products"]:
             yield {
 
-            "Category": products["shelfList"][1]["name"],
-            "Name": products["name"],
-            "Price": products["currentPrice"],
-            "Market": "Pao de Acucar",
-            "Image": data_host + products["mapOfImages"]["0"]["MEDIUM"],
+            "category": products["shelfList"][1]["name"],
+            "name": products["name"],
+            "price": products["currentPrice"],
+            "market": "Pao de Acucar",
+            "image": data_host + products["mapOfImages"]["0"]["MEDIUM"],
 
             }
+
+        # file = open('file/path/file.json', 'r')
+        # file_obj = file.read()
+        # data = file_ojb
+        # response = request.post('https://encart.io/endpoint', data)
